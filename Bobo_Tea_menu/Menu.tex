@@ -1,0 +1,643 @@
+\documentclass[hidelinks,10pt,a4paper]{article}
+\usepackage[italian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{fourier} 
+
+% To avoid GitHub Action error
+\usepackage{hyperref}
+
+% Images
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{tikz}
+\graphicspath{ {Images} }
+
+% Background page image.
+\usepackage{eso-pic}
+
+% To color text parts
+\usepackage{xcolor}
+
+% Minipages in the same line
+\usepackage{tabularx}
+
+% Tabular utilities
+\usepackage{makecell}
+\usepackage{array}
+
+% To have landscape pages
+\usepackage{pdflscape}
+
+% Dummy text for testing purpose
+\usepackage{lipsum} 
+
+% Adjust margins
+\usepackage{changepage}
+\usepackage[top=0.5cm, bottom=0.5cm, outer=0cm, inner=0cm]{geometry}
+
+% Include emoticons
+\usepackage{scalerel}
+\usepackage{xparse}
+
+% Stop hyphenation
+\usepackage[none]{hyphenat}
+
+% To create a list of checkboxes
+\usepackage{enumitem,amssymb}
+
+% License
+\usepackage[
+type={CC},
+modifier={by-nc-sa},
+version={4.0},
+]{doclicense}
+
+%---------------------------------------------------------------------
+
+\definecolor{square}{HTML}{fdbaba}
+\definecolor{alert}{HTML}{fdeeeb}
+\definecolor{desc}{HTML}{c97e82}
+\definecolor{highlight}{HTML}{ef7d6b}
+
+
+%---------------------------------------------------------------------
+
+%%%%% Set background image %%%%%  
+\newcommand{\backGroundImage}{\includegraphics[angle=90, width=\paperwidth,height=\paperheight]{Background_1920x1080.png}}
+%%%%% 
+
+%---------------------------------------------------------------------
+
+%%%%% Minipages for entries %%%%%  
+\newcommand{\mybox}[1]{
+		\colorbox{square}{
+		\begin{minipage}{0.97\linewidth}
+			#1
+		\end{minipage}
+	}
+}
+
+%---------------------------------------------------------------------
+
+%  Entry table formatted 3 column with description
+\newcommand{\entryThreeDesc}[4]{
+{\vspace*{-0.5mm}\textbf{\small{#1}}}&{\vspace*{-0.5mm}\textbf{\small{#3}}}&{\vspace*{-0.5mm}\textbf{\small{#4}}}\\
+%\thead{\vspace*{-3mm}\textcolor{desc}{#2}} &\thead{{}}&\thead{{}}\\
+ \multicolumn{3}{l}{\textcolor{desc}{\footnotesize{#2}}} \\
+}
+
+%  Entry table formatted 3 column without description
+\newcommand{\entryThreeSimple}[3]{
+	{\textbf{\small{#1}}}&{\textbf{\small{#2}}}&{\textbf{\small{#3}}}\\
+}
+
+%  Entry table formatted 3 for drinks case (changed ditances between entries and text)
+\makeatletter
+\newcommand\notsotiny{\@setfontsize\notsotiny{6.2}{7.2}}
+\makeatother
+
+\newcommand{\entryThreeSpecial}[3]{
+	{\textbf{\notsotiny{#1}}}&{\hspace*{-3.7mm}\textbf{\notsotiny{#2}}}&{\hspace*{-3.3mm}\textbf{\notsotiny{#3}}}\\
+}
+
+%  Entry table formatted 3 for drinks case (changed ditances between entries and text) with description
+\newcommand{\entryThreeSpecialDouble}[4]{
+	{\vspace*{-0.5mm}\textbf{\notsotiny{#1}}}&{\vspace*{-0.5mm}\hspace*{-3.7mm}\textbf{\notsotiny{#3}}}&{\vspace*{-0.5mm}\hspace*{-3.3mm}\textbf{\notsotiny{#4}}}\\
+	 \multicolumn{3}{l}{\notsotiny{#2}}\\
+}
+
+%  Entry table formatted 2 column without description
+\newcommand{\entryTwoSimple}[2]{
+	{\textbf{#1}}&{\textbf{#2}}\\
+}
+
+%  Entry table formatted 2 column withdescription
+\newcommand{\entryTwoDesc}[3]{
+	{\vspace*{-0.5mm}\textbf{\small{#1}}}&{\vspace*{-0.5mm}\textbf{\small{#3}}}\\
+	%\thead{\vspace*{-3mm}\textcolor{desc}{#2}} &\thead{{}}&\thead{{}}\\
+	\multicolumn{2}{l}{\textcolor{desc}{\footnotesize{#2}}}\\
+}
+
+%---------------------------------------------------------------------
+
+% Chili emoticon
+\NewDocumentCommand\chili{}{\scalerel*{\includegraphics{Chili.png}}{X}}
+
+% ! emoticon
+\NewDocumentCommand\exclamationPoint{}{\scalerel*{\includegraphics{!.png}}{X}}
+
+% Space to avoid a bug
+\NewDocumentCommand\Space{}{\scalerel*{\includegraphics{Space.png}}{X}}
+
+%---------------------------------------------------------------------
+
+\newlist{checkboxList}{itemize}{2}
+\setlist[checkboxList]{label=$\square$}
+
+%---------------------------------------------------------------------
+
+\begin{document}
+	
+	% Cover page
+	
+	% Remove page number
+	\pagestyle{empty}
+	
+	\title{\textbf{Poke menù template}}
+	\author{Francesco Rombaldoni}
+	\date{}
+	
+	\maketitle
+	
+	%===================================================
+	
+	% First page
+	\newpage
+	\AddToShipoutPictureBG*{\backGroundImage}
+	\begin{landscape}
+	
+	\hspace*{-0.70cm}
+	\begin{tabularx}{\linewidth}{XXX}
+		{
+			% First column
+		\vspace*{0.1cm}
+		\mybox{
+			\begin{tabular*}{\linewidth}{ l l l }
+			\entryThreeDesc{A1 Classic bubble tea}{Tè nero, latte e tapioca}{700ml/500ml}{5€/4.50€}
+			\entryThreeDesc{A2 Green bubble tea}{Tè verde, latte e tapioca}{700ml/500ml}{5€/4.50€}
+			\entryThreeDesc{A3 Jelly bubble tea}{Tè nero, latte e gelatine}{700ml}{5€}
+			\entryThreeDesc{A4 Grass jelly bubble tea}{Tè nero, latte e budini di gelatina alle erbe}{700ml}{5€}
+			\entryThreeDesc{A5 Pudding bubble tea}{Tè nero, latte, budini}{700ml}{5€}
+			\entryThreeDesc{A6 Three brothers}{Tè nero, latte, tapioca, budini e gelatina alle erbe}{700ml}{5€}
+			\entryThreeDesc{A7 Mint bubble tea}{Tè verde, latte, tapioca e menta}{700ml}{5€}	
+			\entryThreeDesc{A8 Strawberry bubble tea}{Tè verde, latte di fragola e tapioca}{700ml}{5€}
+			\entryThreeDesc{A9 First love}{Latte fresco, fragola, matcha, budini e crema di matcha}{700ml}{5.50€}
+			\entryThreeDesc{A10 Matcha bubble tea}{Latte fresco e matcha}{700ml}{5€}
+			\entryThreeDesc{A11 Cream drip oreo}{Tè nero, oreo, latte, perle di agar, crema di cioccolato}{700ml}{5.50€}
+			\entryThreeDesc{A12 Chocolate lava bubble tea}{Cacao, latte, cioccolato, gelatine, panna}{700ml}{5€}
+			\entryThreeDesc{A13 Coffee coconut milk}{Latte di cocco e caffè}{500ml}{5€}
+			\entryThreeDesc{A14 Mango coconut milk}{Latte di cocco e mango}{500ml}{5€}
+			\end{tabular*}
+			
+			\footnotesize{* Cambio del latte: Latte fresco 0,5€; Latte di soia 0,5€; Latte di cocco 0,5€.}
+		}
+		
+		\mybox{
+			\begin{tabular*}{\linewidth}{  l l l }
+			\entryThreeSimple{A15 Traditional black tea}{\hspace*{5mm}700ml}{\hspace*{10mm}4.50€}
+			\entryThreeSimple{A16 Traditional green tea}{\hspace*{5mm}700ml}{\hspace*{10mm}4.50€}
+			\entryThreeSimple{A17 Traditional oolong tea}{\hspace*{5mm}700ml}{\hspace*{10mm}4.50€}
+			\end{tabular*}
+		}
+		
+		\mybox{
+			\begin{tabular*}{\linewidth}{ l l l }
+				\entryThreeDesc{A18 Grapefruit super}{Tè verde, pompelmo e gelatine}{\hspace*{5mm}700ml}{\hspace*{10mm}5€}
+				\entryThreeDesc{A19 Orange super}{Tè verde, arancia, lime e gelatine}{\hspace*{5mm}700ml}{\hspace*{10mm}5€}
+				\entryThreeDesc{A20 Passion fruit \& orange}{Tè verde, frutto della passione, arancia e gelatine}{\hspace*{5mm}700ml}{\hspace*{10mm}5€}
+				\entryThreeDesc{A21 Passion fruit \& mango}{Tè verde, frutto della passione, mango e gelatine}{\hspace*{5mm}700ml}{\hspace*{10mm}5€}
+				\entryThreeDesc{A22 Double passion fruit}{Tè verde, frutto della passione, tapioca e gelatine}{\hspace*{5mm}700ml}{\hspace*{10mm}5€}
+				\entryThreeDesc{A23 Honeydew mango}{Latte di cocco, mango, pompelmo e semi di tapioca}{\hspace*{5mm}700ml}{\hspace*{10mm}5€}
+				\entryThreeDesc{A24 Bitter-like}{Limone e caffè}{\hspace*{5mm}700ml}{\hspace*{10mm}5€}
+			\end{tabular*}
+		}
+		
+		\mybox{
+			\begin{tabular*}{\linewidth}{ l l l }
+			\entryThreeDesc{A25 Blue charmer}{Acqua tonica, agrumi blu e limone}{\hspace*{15mm}700ml}{\hspace*{9mm}5€}
+			\entryThreeDesc{A26 Pink memories}{Acqua tonica, fragola e limone}{\hspace*{15mm}700ml}{\hspace*{9mm}5€}
+			\entryThreeDesc{A27 Sunsets}{Acqua tonica, pompelmo e limone}{\hspace*{15mm}700ml}{\hspace*{9mm}5€}
+			\entryThreeDesc{A28 Hot summer}{Acqua tonica, frutto della passione e limone}{\hspace*{15mm}700ml}{\hspace*{9mm}5€}
+			\end{tabular*}
+		}
+		
+		
+		}&{
+		% Second column
+			\vspace*{0.1cm}
+			\mybox{
+			\begin{tabular*}{\linewidth}{ l l l }
+				\entryThreeDesc{A29 Mango yakult}{Mango, yalult e gelatine}{\hspace*{8mm}700ml}{\hspace*{10mm}5€}
+				\entryThreeDesc{A30 Grapefruit yakult}{Pompelmo, yakult e gelatine}{\hspace*{8mm}700ml}{\hspace*{10mm}5€}
+				\entryThreeDesc{A31 Passion fruit yakult}{Frutto della passione, yakult e gelatine}{\hspace*{8mm}700ml}{\hspace*{10mm}5€}
+				\entryThreeDesc{A32 Lemon yakult}{Limone, yakult e gelatine}{\hspace*{8mm}700ml}{\hspace*{10mm}5€}
+				\entryThreeDesc{A33 Lychee yakult}{Litchi, yakult e gelatine}{\hspace*{8mm}700ml}{\hspace*{10mm}5€}
+			\end{tabular*}
+			}
+			
+			\mybox{
+				\begin{tabular*}{\linewidth}{ l l l }
+					\entryThreeDesc{A34 Jealous lemon}{Tè verde, limone e lime}{\hspace*{7mm}700ml}{\hspace*{10mm}5€}
+					\entryThreeDesc{A35 Strawberry treasure}{Tè verde, fragola e lime}{\hspace*{7mm}700ml}{\hspace*{10mm}5€}
+				\end{tabular*}
+			}
+			
+				\mybox{
+				\begin{tabular*}{\linewidth}{ l l l }
+					\entryThreeDesc{A36 Amazing strawberry}{Tè verde, fragola e crema}{\hspace*{-1mm}700ml}{\hspace*{10.5mm}5.50€}
+					\entryThreeDesc{A37 Amazing mango}{Tè verde, mango e crema}{\hspace*{-1mm}700ml}{\hspace*{10.5mm}5.50€}
+					\entryThreeDesc{A38 Amazing grapes}{Tè verde, uva e crema}{\hspace*{-1mm}700ml}{\hspace*{10.5mm}5.50€}
+					\entryThreeDesc{A39 Amazing lychee}{Tè verde, litchi e crema}{\hspace*{-1mm}700ml}{\hspace*{10.5mm}5.50€}
+					\entryThreeDesc{A40 Amazing coconut}{Tè verde, acqua di cocco e crema}{\hspace*{-1mm}700ml}{\hspace*{10.5mm}5.50€}
+					\entryThreeDesc{A41 Amazing pineapple}{Tè verde, ananas e crema}{\hspace*{-1mm}700ml}{\hspace*{10.5mm}5.50€}
+					\entryThreeDesc{A42 Green amazing pineapple}{Tè verde, ananas, agrumi blue e crema}{\hspace*{-1mm}700ml}{\hspace*{10mm}5.50€}
+				\end{tabular*}
+				
+				\footnotesize{* Se non diversamente specificato la crema inclusa è dolce}
+			}
+			
+			\mybox{
+				\begin{center}
+					\small{\textbf{Ingredienti per bubble tea:}}
+				\end{center}
+				\vspace*{-3mm}
+				\begin{tabularx}{\linewidth}{XX}
+					{
+					\begin{tabular*}{\linewidth}{ l l }
+						\entryTwoSimple{{\scriptsize Crema cheesecake di Philadelphia}}{\hspace*{-2.5mm}{\scriptsize 1€}}
+						\entryTwoSimple{{\scriptsize Panna}}{\hspace*{-2.5mm}{\scriptsize 1€}}
+						\entryTwoSimple{{\scriptsize Mochi}}{\hspace*{-2.5mm}{\scriptsize 1€}}
+						\entryTwoSimple{{\scriptsize Purea di taro}}{\hspace*{-2.5mm}{\scriptsize 1€}}
+						\entryTwoSimple{{\scriptsize Palline di taro a tre colori}}{\hspace*{-2.5mm}{\scriptsize 1€}}
+						\entryTwoSimple{{\scriptsize Palline di tapioca nera}}{\hspace*{-2.5mm}{\scriptsize 0.50€}}
+					\end{tabular*}
+					}&{
+					\begin{tabular*}{\linewidth}{ l l }
+						\entryTwoSimple{{\scriptsize Palline di agar}}{\hspace*{-2.5mm}{\scriptsize 0.50€}}
+						\entryTwoSimple{{\scriptsize Palline di tapioca}}{\hspace*{-2.5mm}{\scriptsize 0.50€}}
+						\entryTwoSimple{{\scriptsize Popping Boba}}{\hspace*{-2.5mm}{\scriptsize 0.50€}}
+						\entryTwoSimple{{\scriptsize Gelatine di cocco}}{\hspace*{-2.5mm}{\scriptsize 0.50€}}
+						\entryTwoSimple{{\scriptsize Budini}}{\hspace*{-2.5mm}{\scriptsize 0.50€}}
+						\entryTwoSimple{{\scriptsize Budini di gelatina alle erbe}}{\hspace*{-2.5mm}{\scriptsize 0.50€}}
+					\end{tabular*}
+					}
+				\end{tabularx}
+			}
+			
+			\mybox{
+				\begin{tabularx}{\linewidth}{XX}
+					{
+						\begin{tabular*}{\linewidth}{ l l l }
+						\entryThreeSpecial{A47 Acqua naturale/frizzante}{500ml}{1€}
+						\entryThreeSpecial{A48 Coca Cola/Coca Cola Zero}{330ml}{2.20€}
+						\entryThreeSpecial{A49 Fanta }{330ml}{2.20€}
+						\entryThreeSpecial{A50 Sprite}{330ml}{2.20€}
+						\entryThreeSpecial{A51 Estathé}{200ml}{1.30€}
+						\entryThreeSpecialDouble{A52 Jia duo bao}{(Tè alle erbe)}{310ml}{2.50€}
+						\entryThreeSpecialDouble{A53 Wangzai}{(Latte condensato)}{245ml}{2.50€}
+						\entryThreeSpecial{A54 Ocean Bomb di Sailor Moon}{330ml}{3.50€}
+						\entryThreeSpecial{A55 Ocean Bomb di Dragon Ball}{330ml}{3.50€}
+						\end{tabular*}
+					}&{
+						\begin{tabular*}{\linewidth}{ l l l }
+						\entryThreeSpecialDouble{A56 Hata Kosen}{(Bibita frizzante)}{200ml}{3€}
+						\entryThreeSpecialDouble{A57 Mogu Mogu}{(Bibita dolce)}{320ml}{2.50€}
+						\entryThreeSpecial{A58 Bira Beck's }{330ml}{2.50€}
+						\entryThreeSpecial{A59 Birra Peroni}{330ml}{2.50€}
+						\entryThreeSpecial{A60 Birra Heineken }{330ml}{2.50€}
+						\entryThreeSpecial{A61 Birra Ichnusa }{330ml}{3€}
+						\entryThreeSpecial{A62 Birra Ceres}{330ml}{3€}
+						\entryThreeSpecial{A63 Birra Corona }{330ml}{3€}
+						\entryThreeSpecial{A64 Birra Moretti}{660ml}{3€}
+						\end{tabular*}
+					}
+				\end{tabularx}
+			}
+			
+		}&{
+		\vspace*{0.1cm}
+		\hspace*{-2mm}
+		\begin{tikzpicture}
+			\draw (0, 0) node[inner sep=0]{\includegraphics[width=1.1\linewidth]{Mascotte.png}};
+			\draw (0.8, 5) node {\textbf{Consegna entro 2km a 2€,}};
+			\draw (1.3, 4.68) node {\textbf{per un minimo di 15€ di spesa,}};
+			\draw (1.3, 4.35) node {\textbf{consegna gratuita sopra i 30€.}};
+			
+			\draw (1.3, 3.5) node {\textbf{Orario: \hspace*{1.5mm}Lunedì - Sabato  \hspace*{1.5mm} 7:00 - 21:00}};
+			\draw (1.63, 3.1) node {\textbf{ Domenica  \hspace*{1.5mm} 12:00 - 20:00}};
+			\draw (1.15, 2.7) node {\textbf{La cucina è aperta dopo le ore 12:00}};
+			
+			\draw (-2, 1.5) node {\textbf{Cell: 3281325773}};
+			\draw (-2, 1.1) node {\textbf{Tel: 0547 482647}};
+			\draw (-1.7, 0.5) node {\textbf{Via: C.B Cavour 165,}};
+			\draw (-1.9, 0.2) node {\textbf{47521, Cesena FC }};
+		\end{tikzpicture}
+		}
+	\end{tabularx}
+	
+	
+	% Second page
+	\newpage
+	\AddToShipoutPictureBG*{\backGroundImage}
+	
+	\hspace*{-0.70cm}
+	\begin{tabularx}{\linewidth}{XXX}
+		{
+		
+		\vspace*{0.1cm}
+		\mybox{
+			\begin{tabular*}{\linewidth}{ l l l }
+				\entryThreeDesc{Involtini di primavera}{\vspace*{-0.5mm}Carote, cavolo, cipolla e carne}{\hspace*{4mm}2pz}{\hspace*{13mm}2€}
+				\entryThreeDesc{Ravioli di carne al vapore}{\vspace*{-0.5mm}Carote, cavolo e carne}{\hspace*{4mm}4pz}{\hspace*{13mm}4€}
+				\entryThreeDesc{Ravioli di carne alla griglia}{\vspace*{-0.5mm}Carote, cavolo e carne}{\hspace*{4mm}4pz}{\hspace*{13mm}4.50€}
+				\entryThreeDesc{Ravioli di verdure al vapore}{\vspace*{-0.5mm}Funghi, funghi cinesi, wakame, mais e carote}{\hspace*{4mm}4pz}{\hspace*{13mm}4€}
+			\end{tabular*}
+		}
+			
+			\mybox{
+				\begin{tabular*}{\linewidth}{ l l }
+					\entryTwoDesc{Riso alla cantonese}{\vspace*{-0.5mm}Riso, piselli, prosciutto cotto e uovo}{\hspace*{37mm}5€}
+					\entryTwoDesc{Riso con verdure}{\vspace*{-0.5mm}Riso, carote, cavolo e zucchine}{\hspace*{37mm}5€}
+					\entryTwoDesc{Riso con pollo}{\vspace*{-0.5mm}Riso, pollo, uovo, carote, cavolo e zucchine}{\hspace*{37mm}5€}
+					\entryTwoDesc{Riso con gamberi}{\vspace*{-0.5mm}Riso, gamberi, uovo, carote, cavolo e zucchine}{\hspace*{37mm}5.50€}
+				\end{tabular*}
+			}
+			
+			\mybox{
+				\begin{tabular*}{\linewidth}{ l l }
+					\entryTwoDesc{Spaghetti di riso con verdure}{\vspace*{-0.5mm}Spaghetti di riso, carote, cavolo, zucchine e uovo}{\hspace*{23mm}5€}
+					\entryTwoDesc{Spaghetti di riso con pollo}{\vspace*{-0.5mm}Spaghetti di riso, pollo, carote, cavolo, zucchine e uovo}{\hspace*{23mm}5€}
+					\entryTwoDesc{Spaghetti di riso con gamberi}{\vspace*{-0.5mm}Spaghetti di riso, gamberi, carote, cavolo, zucchine e uovo}{\hspace*{23mm}5.50€}
+				\end{tabular*}
+			}
+			
+				\mybox{
+				\begin{tabular*}{\linewidth}{ l l }
+					\entryTwoDesc{Spaghetti di soia con verdure}{\vspace*{-0.5mm}Spaghetti di soia, carote, cavolo e zucchine}{\hspace*{23mm}5€}
+					\entryTwoDesc{Spaghetti di soia con pollo}{\vspace*{-0.5mm}Spaghetti di soia, pollo, carote, cavolo e zucchine}{\hspace*{23mm}5€}
+					\entryTwoDesc{Spaghetti di soia con gamberi}{\vspace*{-0.5mm}Spaghetti di soia, gamberi, carote, cavolo e zucchine}{\hspace*{23mm}5.50€}
+				\end{tabular*}
+			}
+			
+			\mybox{
+				\begin{tabular*}{\linewidth}{ l l }
+					\entryTwoDesc{Pollo con verdure}{\vspace*{-0.5mm}Pollo, carote, cavolo e zucchine}{\hspace*{15mm}5.50€}
+					\entryTwoDesc{Pollo piccante \hspace*{24mm}{\Large\chili}}{\vspace*{-0.5mm}Pollo, carote, cavolo, zucchine e salsa piccante}{\hspace*{15mm}5.50€}
+					\entryTwoDesc{Pollo al curry}{\vspace*{-0.5mm}Pollo, carote, cavolo, zucchine e salsa al curry}{\hspace*{15mm}5.50€}
+					\entryTwoDesc{Pollo al limone}{\vspace*{-0.5mm}Pollo, limone e salsa al limone}{\hspace*{15mm}5.50€}
+				\end{tabular*}
+			}
+			
+			\mybox{
+				\begin{tabular*}{\linewidth}{ l l }
+					\entryTwoDesc{Gamberi con verdure}{\vspace*{-0.5mm}Gamberi, carote, cavolo e zucchine}{\hspace*{15mm}7.50€}
+					\entryTwoDesc{Gamberi piccanti  \hspace*{20mm}{\Large\chili}}{\vspace*{-0.5mm}Gamberi, carote, cavolo, zucchine e salsa piccante}{\hspace*{15mm}7.50€}
+				%	\entryThreeDesc{Gamberi piccanti}{Gamberi, carote, cavolo, zucchine e salsa piccante}{\chili}{7.50€}
+					\entryTwoDesc{Gamberi al curry}{\vspace*{-0.5mm}Gamberi, carote, cavolo, zucchine e salsa al curry}{\hspace*{15mm}7.50€}
+					\entryTwoDesc{Gamberi al limone}{\vspace*{-0.5mm}Gamberi, limone e salsa al limone}{\hspace*{15mm}7.50€}
+				\end{tabular*}
+			}
+	
+				\vspace*{1mm}
+				\colorbox{alert}{
+				\begin{minipage}{0.97\linewidth}
+					\raggedright {\huge\exclamationPoint} Hai un'allergia o un'intolleranza alimentare?\\ 
+					Se hai un'allergia o un'intolleranza alimentare (o se una persona per la quale stai effettuando un ordine ne ha), telefona immediatamente al ristorante al numero 3281325773.\\ 
+					Non effettuare l'ordine se non riesci ad ottenere le informazioni di cui hai bisogno.\\
+					\vspace*{-0.5mm}
+				\end{minipage}
+			}
+			
+		}&{
+				
+				\vspace*{0.1cm}			
+				\mybox{
+				\begin{tabular*}{\linewidth}{ l l l }
+				\entryThreeSimple{Hot dog}{\hspace*{30mm}1pz}{\hspace*{13mm}2€}
+				\entryThreeSimple{Piadina cinese}{\hspace*{30mm}1pz}{\hspace*{13mm}6€}
+				\entryThreeSimple{Takoyaki}{\hspace*{30mm}4pz}{\hspace*{13mm}3€}
+				\end{tabular*}
+			}
+			
+			\mybox{
+				\begin{tabular*}{\linewidth}{ l l l }
+				\entryThreeSimple{Patatine fritte}{\hspace*{29mm}}{\hspace*{9mm}3€}
+				\entryThreeSimple{Crocchette di pollo}{\hspace*{20mm}5pz}{\hspace*{9mm}3.50€}
+				\entryThreeDesc{Pollo fritto misto }{3pz pollo + patatine fritte + 4pz crocchette di pollo}{\hspace*{20mm}3+1+4}{\hspace*{9mm}7€}
+				\entryThreeSimple{Pollo fritto con senape}{\hspace*{5mm}{\Large\chili}\hspace*{10.5mm}3pz}{\hspace*{9mm}4.50€}
+				\entryThreeSimple{Pollo fritto piccante}{\hspace*{5mm}{\Large\chili\chili}\hspace*{6mm}3pz}{\hspace*{9mm}4.50€}
+				\entryThreeDesc{Nankotsu}{Spiedini di cartilagine di pollo}{\hspace*{5mm}{\Large\chili}\hspace*{10.5mm}1pz}{\hspace*{9mm}1.50€}
+				\entryThreeDesc{Nankotsu}{Spiedini di cartilagine di pollo}{\hspace*{5mm}{\Large\chili}\hspace*{10.5mm}4pz}{\hspace*{9mm}5€}
+				\entryThreeSimple{Spiedini di pollo}{\hspace*{5mm}{\Large\chili}\hspace*{10.5mm}1pz}{\hspace*{9mm}2€}
+				\entryThreeSimple{Spiedini di pollo}{\hspace*{5mm}{\Large\chili}\hspace*{10.5mm}3pz}{\hspace*{9mm}5€}
+				\entryThreeSimple{Spiedini di carne}{\hspace*{5mm}{\Large\chili}\hspace*{10.5mm}3pz}{\hspace*{9mm}5€}
+				\entryThreeSimple{Spiedini di agnello}{\hspace*{5mm}{\Large\chili}\hspace*{10.5mm}3pz}{\hspace*{9mm}5€}
+				\end{tabular*}
+			}
+			
+				\mybox{
+					\hspace*{-3mm}
+				\begin{tabularx}{\linewidth}{XX}
+					{
+						\begin{tabular*}{\linewidth}{ l l l }
+						\entryThreeSimple{Panino piccolo}{1pz}{1.70€}
+						\entryThreeSimple{Panino medio}{1pz}{2.70€}
+						\entryThreeSimple{Spianata}{1pz}{2.20€}
+						\end{tabular*}
+					}&{
+						\begin{tabular*}{\linewidth}{ l l l }
+							\entryThreeSimple{Toast}{1pz}{3€}
+							\entryThreeSimple{Piadina}{1pz}{5€}
+							\entryThreeSimple{Mezza piadina}{1pz}{2.70€}
+						\end{tabular*}
+					}
+				\end{tabularx}
+			}
+			
+			\mybox{
+				\hspace*{-3mm}
+				\begin{tabularx}{\linewidth}{XX}
+					{
+						{\Space\Space\Space\large\textbf{Uramaki\Space8pz}}
+						\begin{tabular*}{\linewidth}{ l l }
+							\entryTwoDesc{B1 Uramaki sake}{\vspace*{-0.5mm}Salmone e avocado}{8€}
+							\entryTwoDesc{B2 Uramaki maguro}{\vspace*{-0.5mm}Tonno e avocado}{9€}
+							\entryTwoDesc{B3 Uramaki ebi}{\vspace*{-0.5mm}Gamberi cotti e avocado}{8€}
+							\entryTwoDesc{B4 Uramaki surimi}{\vspace*{-0.5mm}Granchio, cetrioli e avocado}{8€}
+							\entryTwoDesc{B5 Uramaki vegetale}{\vspace*{-0.5mm}Avocado, cetrioli e insalata}{8€}
+							\entryTwoDesc{B6 Uramaki mango}{\vspace*{-0.5mm}\thead{Gamberi cotti, mango, avocado\\ \hspace*{-17mm}e salsa di mango}}{9€}
+						\end{tabular*}
+					}&{
+						{\Space\Space\Space\large\textbf{Hosomaki\Space8pz}}
+						\begin{tabular*}{\linewidth}{ l l }
+							\entryTwoDesc{B7 Hosomaki sake}{\vspace*{-0.5mm}Salmone}{4€}
+							\entryTwoDesc{B8 Hosomaki maguro}{\vspace*{-0.5mm}Tonno}{4.50€}
+							\entryTwoDesc{B9 Hosomaki ebi}{\vspace*{-0.5mm}Gamberi cotti}{4€}
+							\entryTwoDesc{B10 Hosomaki avocado}{\vspace*{-0.5mm}Avocado}{4€}
+							\entryTwoDesc{B11 Hosomaki cetrioli}{\vspace*{-0.5mm}Cetrioli}{3.50€}
+							\entryTwoDesc{B12 Hosomaki surimi}{\vspace*{-0.5mm}Granchio}{4€}
+						\end{tabular*}
+					}
+				\end{tabularx}
+			}
+			
+			\mybox{
+				\begin{tabular*}{\linewidth}{ l l l }
+				\entryThreeDesc{B13 Onigiri sake}{Salmone}{\hspace*{14mm}1pz}{\hspace*{13mm}4€}
+				\entryThreeDesc{B14 Onigiri maguro}{Tonno}{\hspace*{14mm}1pz}{\hspace*{13mm}4.50€}
+				\entryThreeDesc{B15 Onigiri ebi}{Gamberi cotti}{\hspace*{14mm}1pz}{\hspace*{13mm}4€}
+				\entryThreeDesc{B16 Onigiri avocado}{Avocado}{\hspace*{14mm}1pz}{\hspace*{13mm}4€}
+				\end{tabular*}
+			}
+		
+		}&{
+		\vspace*{0.1cm}
+		{\hspace*{40mm} \huge \textbf{POKE}}\newline
+		\begin{tabularx}{\linewidth}{XX}
+			{
+			\mybox{
+				\begin{center}
+					\includegraphics[scale=2]{Poke_big.png}
+				\end{center}
+				\vspace*{-4mm}
+			\textbf{Poke salmone 1000ml   10€}
+			\vspace*{-3mm}
+			\raggedright
+			\begin{itemize}
+				\setlength\itemsep{-2mm}
+				\item {\footnotesize Base: Riso bianco e Riso nero}
+				\item {\footnotesize Proteine: Tonno, Salmone e Surimi}
+				\item {\footnotesize Mix-In: Mais, Insalata, Avocado, Pomodorini e Mango}
+				\item {\footnotesize Salsa: Salsa Teriyaki e Salsa Mango}
+				\item {\footnotesize Crunchy: Cipolla fritta e Arachidi}
+			\end{itemize}
+			}
+			}&{
+			\vspace*{-39.8mm}
+			\mybox{
+				\begin{center}
+					\includegraphics[scale=2]{Poke_small.png}
+				\end{center}
+				\vspace*{-4mm}
+				\textbf{Poke salmone 700ml    7€}
+				\vspace*{-3mm}
+			\raggedright
+			\begin{itemize}
+				\setlength\itemsep{-2mm}
+				\item {\footnotesize Base: Riso bianco}
+				\item {\footnotesize Proteine: Salmone e Surimi}
+				\item {\footnotesize Mix-In: Insalata, Avocado, Pomodorini e Mango}
+				\item {\footnotesize Salsa: Salsa Teriyaki}
+				\item {\footnotesize Crunchy: Cipolla fritta}
+			\end{itemize}
+			}
+			}
+			\vspace*{19mm}
+		\end{tabularx}
+		\vspace*{0.5mm}
+		\mybox{
+			\textbf{\colorbox{highlight}{Poke medio 700ml   \hspace*{10mm} 9.90€}}\newline
+			1 Base, 2 Proteine, 4 Mix-In, 2 Salse e 1 Crunchy
+		}
+		\mybox{
+			\textbf{\colorbox{highlight}{Poke grande 1000ml   \hspace*{10mm} 12.90€}}\newline
+			2 Basi, 3 Proteine, 5 Mix-In, 3 Salse e 3 Crunchy
+		}
+		
+		\mybox{
+				\textbf{\colorbox{highlight}{Base  \hspace*{10mm} 1€}}\newline
+				\hspace*{-3mm}
+				\begin{tabularx}{\linewidth}{XX}
+					{
+					{\footnotesize
+					$\square$ Riso bianco \vspace*{-1mm} \newline
+					$\square$ Riso Sushi \vspace*{-1mm} \newline}
+					}&{
+					{\footnotesize
+					$\square$ Riso nero venere \vspace*{-1mm} \newline
+					$\square$ Insalata mista \vspace*{-1mm} \newline}
+					}
+				\end{tabularx}
+				\vspace*{-4mm}
+		}
+		
+		\begin{tabularx}{\linewidth}{XX}
+			{
+			\vspace*{-28.3mm}
+			\mybox{
+				\textbf{\colorbox{highlight}{Proteine  \hspace*{10mm} 1€}}\newline
+				{\footnotesize
+				$\square$ Salmone \vspace*{-1mm} \newline
+				$\square$ Tonno \vspace*{-1mm} \newline
+				$\square$ Tonno cotto \vspace*{-1mm} \newline
+				$\square$ Surimi \vspace*{-1mm} \newline
+				$\square$ Gamberi cotti \vspace*{-1mm} \newline
+				$\square$ Manzo \vspace*{-1mm} \newline
+				$\square$ Pollo \vspace*{-1mm} \newline
+				$\square$ Polpo \vspace*{-1mm} \newline
+				$\square$ Feta \vspace*{-1mm} \newline
+				$\square$ Tofu \vspace*{-1mm} \newline
+				$\square$ Mozzarella \vspace*{-1mm} \newline}
+				\vspace*{-3mm}
+			}
+			
+			\mybox{
+			\textbf{\colorbox{highlight}{Salsa  \hspace*{10mm} 0.30€}}\newline
+			{\footnotesize
+			$\square$ Salsa di soia \vspace*{-1mm} \newline
+			$\square$ Salsa Teriyaki \vspace*{-1mm} \newline
+			$\square$ Salsa di mango \vspace*{-1mm} \newline
+			$\square$ {\raggedright Salsa di frutto della passione} \vspace*{-1mm} \newline
+			$\square$ Salsa di sesamo \vspace*{-1mm} \newline
+			$\square$ Olio di oliva \vspace*{-1mm} \newline
+			$\square$ Aceto balsamico \vspace*{-1mm} \newline
+			$\square$ Maionese \vspace*{-1mm} \newline}
+			\vspace*{-3mm}
+			}
+			}&{
+			
+			\mybox{
+			\textbf{\colorbox{highlight}{Mix-In  \hspace*{10mm} 0.50€}}\newline
+			{\footnotesize
+			$\square$ Alghe wakame \vspace*{-1mm} \newline
+			$\square$ Avocado \vspace*{-1mm} \newline
+			$\square$ Ananas \vspace*{-1mm} \newline
+			$\square$ Carote \vspace*{-1mm} \newline
+			$\square$ Cavolo rosso \vspace*{-1mm} \newline
+			$\square$ Cetriolo \vspace*{-1mm} \newline
+			$\square$ Cipolla rossa \vspace*{-1mm} \newline
+			$\square$ Mais \vspace*{-1mm} \newline
+			$\square$ Mango \vspace*{-1mm} \newline
+			$\square$ Mirtilli \vspace*{-1mm} \newline
+			$\square$ Frutto della passione \vspace*{-1mm} \newline
+			$\square$ Pomodorini \vspace*{-1mm} \newline
+			$\square$ Olive \vspace*{-1mm} \newline
+			$\square$ Insalata \vspace*{-1mm} \newline
+			$\square$ Rucola \vspace*{-1mm} \newline}
+			\vspace*{-3mm}
+			}
+			
+			\mybox{
+			\textbf{\colorbox{highlight}{Crunchy \hspace*{10mm} 0.50€}}\newline
+			{\footnotesize
+			$\square$ Tobiko \vspace*{-1mm} \newline
+			$\square$ Cipolla fritta \vspace*{-1mm} \newline
+			$\square$ Sesamo \vspace*{-1mm} \newline
+			$\square$ Pistacchi \vspace*{-1mm} \newline
+			$\square$ Arachidi \vspace*{-1mm} \newline
+			$\square$ Ròusōng \vspace*{-1mm} \newline}
+			\vspace*{-3mm}
+			}
+			
+			}
+		\end{tabularx}
+		
+		}
+	\end{tabularx}
+	
+	\end{landscape}
+	
+	%===================================================
+	% License page
+	\newpage
+	\vspace*{\fill}
+	% Print license
+	\begin{center}
+		\begin{minipage}{0.8\linewidth}
+			\doclicenseThis
+		\end{minipage}
+	\end{center}
+	
+\end{document}

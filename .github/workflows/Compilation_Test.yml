@@ -1,0 +1,21 @@
+name: Compilation_Test
+on:
+  push:
+    branches:
+      - 'main'
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download repo files
+        uses: actions/checkout@v4.1.1
+      - name: Compile files
+        uses: xu-cheng/latex-action@v3
+        with:
+          working_directory: Bobo_Tea_menu
+          root_file: Menu.tex
+      - name: Upload compiled file
+        uses: actions/upload-artifact@v4
+        with: 
+          name: Bobo_Tea_menu
+          path: Bobo_Tea_menu/Menu.pdf

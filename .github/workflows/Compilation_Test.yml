@@ -15,7 +15,7 @@ jobs:
           working_directory: Bobo_Tea_menu
           root_file: Menu.tex
       - name: Upload compiled file
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with: 
           name: Bobo_Tea_menu
           path: Bobo_Tea_menu/Menu.pdf
